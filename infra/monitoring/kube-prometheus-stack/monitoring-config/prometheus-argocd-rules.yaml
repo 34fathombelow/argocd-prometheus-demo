@@ -1,0 +1,55 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: kube-prometheus-stack
+    release: kube-prometheus-stack
+  name: argocd-rules
+  namespace: monitoring
+spec:
+  groups:
+  - name: argocd-rules
+    rules:
+    - alert: ArgoCDAppOutOfSync
+      annotations:
+        description: 'Your Application "{{ $labels.name }}" on cluster"{{ $labels.dest_server}}" is out of Sync.'
+        summary: You really should enable autosync on your Application. 
+                 Please see https://argo-cd.readthedocs.io/en/latest/user-guide/auto_sync/
+                 for documentation on how to enable it. 
+      expr: argocd_app_info{sync_status!="Synced"}
+      for: 1m
+      labels:
+        severity: Warning   
+    - alert: ArgoCDAppUnhealthy
+      annotations:
+        description: 'Your Application "{{ $labels.name }}" on cluster"{{ $labels.dest_server}}" is not Healthy.'
+        summary: "ArgoCD App is Unhealthy"
+      expr: argocd_app_info{health_status!="Healthy"} > 0
+      for: 1m
+      labels:
+        severity: warning
+    - alert: ArgoCDAppSyncFailed
+      annotations:
+        description: 'Your Application did not sync properly'
+        summary: "'{{ $labels.name }}' Application sync phase is '{{ $labels.phase }}'"
+      expr: argocd_app_sync_total{phase!="Succeeded"} == 1
+      for: 1m
+      labels:
+        severity: warning
+    - alert: ArgoCDAppMissing
+      annotations:
+        summary: "No Applications"
+        description: ArgoCD has no applications for the last 15 minutes. Something must be really wrong.
+      expr: absent(argocd_app_info)
+      for: 15m
+      labels:
+        severity: critical
+    - alert: ArgoCDApiServerDown
+      annotations:
+        description: All Argo CD API servers are down.
+      expr: max(up{job="argocd-server-metrics"}) == 0
+      for: 15m
+      labels:
+        severity: critical
+
+      
