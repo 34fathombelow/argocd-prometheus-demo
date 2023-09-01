@@ -7,3 +7,5 @@ resources:
 patchesStrategicMerge:
 - overlays/production/argocd-cm.yaml
 - overlays/production/argocd-rbac-cm.yaml
+- overlays/production/argocd-cmd-params-cm.yaml
+
