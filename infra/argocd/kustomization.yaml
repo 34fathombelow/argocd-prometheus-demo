@@ -23,9 +23,7 @@ patches:
                 image: quay.io/argoprojlabs/argocd-extension-installer:v0.0.1
                 env:
                 - name: EXTENSION_URL
-                  value: https://github.com/argoproj-labs/argocd-extension-metrics/releases/download/v1.0.0/extension.tar.gz
-                - name: EXTENSION_CHECKSUM_URL
-                  value: https://github.com/argoproj-labs/argocd-extension-metrics/releases/download/v1.0.0/extension_checksums.txt
+                  value: https://raw.githubusercontent.com/argoproj-labs/rollout-extension/v0.2.1/manifests/install.yaml
                 volumeMounts:
                   - name: extensions
                     mountPath: /tmp/extensions/
