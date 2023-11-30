@@ -9,3 +9,50 @@ patchesStrategicMerge:
 - overlays/production/argocd-rbac-cm.yaml
 - overlays/production/argocd-cmd-params-cm.yaml
 
+patches:
+  - patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: argocd-server
+      spec:
+        template:
+          spec:
+            initContainers:
+              - name: extension-metrics
+                image: quay.io/argoprojlabs/argocd-extension-installer:v0.0.1
+                env:
+                - name: EXTENSION_URL
+                  value: https://github.com/argoproj-labs/argocd-extension-metrics/releases/download/v1.0.0/extension.tar.gz
+                - name: EXTENSION_CHECKSUM_URL
+                  value: https://github.com/argoproj-labs/argocd-extension-metrics/releases/download/v1.0.0/extension_checksums.txt
+                volumeMounts:
+                  - name: extensions
+                    mountPath: /tmp/extensions/
+                securityContext:
+                  runAsUser: 1000
+                  allowPrivilegeEscalation: false
+
+    target:
+      name: argocd-server
+      kind: Deployment
+
+  - patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: argocd-server
+      spec:
+        template:
+          spec:
+            containers:
+              - name: argocd-server
+                volumeMounts:
+                  - name: extensions
+                    mountPath: /tmp/extensions/
+            volumes:
+              - name: extensions
+                emptyDir: {}
+    target:
+      name: argocd-server
+      kind: Deployment
