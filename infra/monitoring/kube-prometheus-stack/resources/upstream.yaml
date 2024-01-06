@@ -1,5 +1,5 @@
 ---
-# Source: crds/crd-alertmanagerconfigs.yaml
+# Source: kube-prometheus-stack/charts/kube-prometheus-stack/crds/crd-alertmanagerconfigs.yaml
 # https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v0.63.0/example/prometheus-operator-crd/monitoring.coreos.com_alertmanagerconfigs.yaml
 ---
 apiVersion: apiextensions.k8s.io/v1
@@ -4483,7 +4483,7 @@ spec:
     storage: true
 
 ---
-# Source: crds/crd-alertmanagers.yaml
+# Source: kube-prometheus-stack/charts/kube-prometheus-stack/crds/crd-alertmanagers.yaml
 # https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v0.63.0/example/prometheus-operator-crd/monitoring.coreos.com_alertmanagers.yaml
 ---
 apiVersion: apiextensions.k8s.io/v1
@@ -11598,7 +11598,7 @@ spec:
       status: {}
 
 ---
-# Source: crds/crd-podmonitors.yaml
+# Source: kube-prometheus-stack/charts/kube-prometheus-stack/crds/crd-podmonitors.yaml
 # https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v0.63.0/example/prometheus-operator-crd/monitoring.coreos.com_podmonitors.yaml
 ---
 apiVersion: apiextensions.k8s.io/v1
@@ -12267,7 +12267,7 @@ spec:
     storage: true
 
 ---
-# Source: crds/crd-probes.yaml
+# Source: kube-prometheus-stack/charts/kube-prometheus-stack/crds/crd-probes.yaml
 # https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v0.63.0/example/prometheus-operator-crd/monitoring.coreos.com_probes.yaml
 ---
 apiVersion: apiextensions.k8s.io/v1
@@ -12975,7 +12975,7 @@ spec:
     storage: true
 
 ---
-# Source: crds/crd-prometheuses.yaml
+# Source: kube-prometheus-stack/charts/kube-prometheus-stack/crds/crd-prometheuses.yaml
 # https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v0.63.0/example/prometheus-operator-crd/monitoring.coreos.com_prometheuses.yaml
 ---
 apiVersion: apiextensions.k8s.io/v1
@@ -22155,7 +22155,7 @@ spec:
       status: {}
 
 ---
-# Source: crds/crd-prometheusrules.yaml
+# Source: kube-prometheus-stack/charts/kube-prometheus-stack/crds/crd-prometheusrules.yaml
 # https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v0.63.0/example/prometheus-operator-crd/monitoring.coreos.com_prometheusrules.yaml
 ---
 apiVersion: apiextensions.k8s.io/v1
@@ -22278,7 +22278,7 @@ spec:
     storage: true
 
 ---
-# Source: crds/crd-servicemonitors.yaml
+# Source: kube-prometheus-stack/charts/kube-prometheus-stack/crds/crd-servicemonitors.yaml
 # https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v0.63.0/example/prometheus-operator-crd/monitoring.coreos.com_servicemonitors.yaml
 ---
 apiVersion: apiextensions.k8s.io/v1
@@ -22977,7 +22977,7 @@ spec:
     storage: true
 
 ---
-# Source: crds/crd-thanosrulers.yaml
+# Source: kube-prometheus-stack/charts/kube-prometheus-stack/crds/crd-thanosrulers.yaml
 # https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v0.63.0/example/prometheus-operator-crd/monitoring.coreos.com_thanosrulers.yaml
 ---
 apiVersion: apiextensions.k8s.io/v1
@@ -29873,6 +29873,14 @@ data:
     -H "Content-Type: application/json;charset=UTF-8" \
       "https://raw.githubusercontent.com/argoproj/argo-cd/master/examples/dashboard.json" \
     > "/var/lib/grafana/dashboards/default/ArgoCD.json"
+      
+    curl -skf \
+    --connect-timeout 60 \
+    --max-time 60 \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json;charset=UTF-8" \
+      "https://raw.githubusercontent.com/dragonflydb/dragonfly-operator/main/monitoring/grafana-dashboard.json" \
+    > "/var/lib/grafana/dashboards/default/DragonflyDB.json"
 ---
 # Source: kube-prometheus-stack/charts/kube-prometheus-stack/charts/grafana/templates/dashboards-json-configmap.yaml
 apiVersion: v1
@@ -69824,7 +69832,7 @@ spec:
         app.kubernetes.io/name: grafana
         app.kubernetes.io/instance: kube-prometheus-stack
       annotations:
-        checksum/config: 94610462c9a72589178c07582b4cc416ba43520476b1b09abe58f55d262bad92
+        checksum/config: a8c29b0069808a5df732d7bcb20acc5384986bd718d6c60bf58939d75e864edc
         checksum/dashboards-json-config: 23042ea720a5d9b5ff8039a71b902ab81542642f02d55577535909c5f2f3750d
         checksum/sc-dashboard-provider-config: 832702ef9354ad9ff172e67ad5f340cf5969d18de964d2d70fa1b02a16c2a7f5
         checksum/secret: 1b0bce2ee3051b71cab31fa20fb03be549453fde298c53421853c012b330765e
