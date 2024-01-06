@@ -3,5 +3,4 @@ kind: ConfigMap
 metadata:
   name: argocd-cmd-params-cm
 data:
-  controller.status.processors: "50"
-  controller.operation.processors: "25"
+  redis.server: argocd-dragonfly-db:6379
