@@ -17,3 +17,5 @@ kube-prometheus-stack:
       default:
         ArgoCD:
           url: https://raw.githubusercontent.com/argoproj/argo-cd/master/examples/dashboard.json
+        DragonflyDB: 
+          url: https://raw.githubusercontent.com/dragonflydb/dragonfly-operator/main/monitoring/grafana-dashboard.json
