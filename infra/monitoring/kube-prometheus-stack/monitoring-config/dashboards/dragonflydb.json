@@ -1371,7 +1371,7 @@
 		}
 	  }
 	],
-	"refresh": "",
+	"refresh": "5m",
 	"revision": 1,
 	"schemaVersion": 38,
 	"style": "dark",
@@ -1383,7 +1383,7 @@
 	  "list": [
 		{
 		  "current": {
-			"selected": false,
+			"selected": true,
 			"text": "argocd-dragonfly-db",
 			"value": "argocd-dragonfly-db"
 		  },
@@ -1410,7 +1410,7 @@
 		},
 		{
 		  "current": {
-			"selected": false,
+			"selected": true,
 			"text": "argocd-dragonfly-db-0",
 			"value": "argocd-dragonfly-db-0"
 		  },
@@ -1438,7 +1438,7 @@
 	  ]
 	},
 	"time": {
-	  "from": "now-15m",
+	  "from": "now-3h",
 	  "to": "now"
 	},
 	"timepicker": {
@@ -1469,6 +1469,6 @@
 	"timezone": "utc",
 	"title": "Dragonfly Dashboard",
 	"uid": "xDLNRKUWl",
-	"version": 2,
+	"version": 1,
 	"weekStart": ""
   }
