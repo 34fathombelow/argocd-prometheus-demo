@@ -1,21 +1,24 @@
 kube-prometheus-stack:
   grafana:
     adminPassword: argo-demo
-    dashboardProviders:
-      dashboardproviders.yaml:
-        apiVersion: 1
-        providers:
-        - name: 'default'
-          orgId: 1
-          folder: ''
-          type: file
-          disableDeletion: false
-          editable: true
-          options:
-            path: /var/lib/grafana/dashboards/default
-    dashboards:
-      default:
-        ArgoCD:
-          url: https://raw.githubusercontent.com/argoproj/argo-cd/master/examples/dashboard.json
-        DragonflyDB: 
-          url: https://raw.githubusercontent.com/dragonflydb/dragonfly-operator/main/monitoring/grafana-dashboard.json
+    sidecar:
+      dashboards:
+        enabled: true
+
+    #dashboardProviders:
+    #  dashboardproviders.yaml:
+    #    apiVersion: 1
+    #    providers:
+    #    - name: 'default'
+    #      orgId: 1
+    #      folder: ''
+    #      type: file
+    #      disableDeletion: false
+    #      editable: true
+    #      options:
+    #        path: /var/lib/grafana/dashboards/default
+    #dashboards:
+    #  default:
+    #    ArgoCD:
+    #      url: https://raw.githubusercontent.com/argoproj/argo-cd/master/examples/dashboard.json
+

@@ -7,3 +7,17 @@ resources:
 - monitoring-config/argocd-controller-metrics-servicemonitor.yaml
 - monitoring-config/argocd-repo-server-metrics-servicemonitor.yaml
 - monitoring-config/prometheus-argocd-rules.yaml
+
+configMapGenerator:
+  - name: argo-cd-dashboard
+    files:
+    - monitoring-config/dashboards/argocd.json
+    options:
+      labels:
+        grafana_dashboard: argo-cd-dashboard
+  - name: dragonflydb-dashboard
+    files:
+    - monitoring-config/dashboards/dragonflydb.json
+    options:
+      labels:
+        grafana_dashboard: dragonflydb-dashboard
