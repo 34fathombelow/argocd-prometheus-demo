@@ -6,6 +6,8 @@ resources:
 - monitoring-config/argocd-applicationset-metrics-servicemonitor.yaml
 - monitoring-config/argocd-controller-metrics-servicemonitor.yaml
 - monitoring-config/argocd-repo-server-metrics-servicemonitor.yaml
+- monitoring-config/dragonfly-pod-monitor.yaml
+
 - monitoring-config/prometheus-argocd-rules.yaml
 
 configMapGenerator:
