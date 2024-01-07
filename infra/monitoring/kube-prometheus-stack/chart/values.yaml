@@ -4,6 +4,7 @@ kube-prometheus-stack:
     sidecar:
       dashboards:
         enabled: true
+        labelValue: ""
 
     #dashboardProviders:
     #  dashboardproviders.yaml:
