@@ -1,6 +1,6 @@
 kube-prometheus-stack:
   grafana:
-    adminPassword: argo-demo
+    adminPassword: admin
     sidecar:
       dashboards:
         enabled: true

@@ -1,4 +1,4 @@
-# Argo CD Prometheus App of Apps Demo
+# Argo CD Prometheus with dragonflyDB
 The Purpose of this repository is to demonstrate how Argo CD can self manage itself using the **app of apps pattern**. Once the cluster is fully bootstrapped, Argo CD and a full Prometheus monitoring stack will be deployed. Dashboards and alerts are configured to monitor Argo CD. An Application `guestbook-not-synced` should be in the **Missing** and `OutOfSync` status by default. One can visit the Prometheus or Alertmanager application to view the triggered alerts.  Clicking the `SYNC` button in the Argo CD UI for the `guestbook-not-synced` Application will sync the Application and clear the alerts.  
 
 ## Bootstrapping the Demo
@@ -12,7 +12,7 @@ $ kubectl create ns argocd
 ```
 3. Install a version of Argo CD on your cluster
 ```bash
-$ kubectl -n argocd apply -f https://raw.githubusercontent.com/argoproj/argo-cd/release-2.6/manifests/install.yaml
+$ kubectl -n argocd apply -f https://raw.githubusercontent.com/argoproj/argo-cd/release-2.9/manifests/install.yaml
  ```
 4. Once the deployment is complete, apply the bootstrap
 ```bash
@@ -44,4 +44,4 @@ You can then access via http://localhost:4002
 ```bash
 $ kubectl -n monitoring port-forward svc/kube-prometheus-stack-grafana 4003:80
 ```
-You can then access via http://localhost:4003 and use the default user:password of `admin:argo-demo`
+You can then access via http://localhost:4003 and use the default user:password of `admin:admin`

@@ -29774,7 +29774,7 @@ metadata:
 type: Opaque
 data:
   admin-user: "YWRtaW4="
-  admin-password: "YXJnby1kZW1v"
+  admin-password: "YWRtaW4="
   ldap-toml: ""
 ---
 # Source: kube-prometheus-stack/charts/kube-prometheus-stack/templates/alertmanager/secret.yaml
@@ -69788,7 +69788,7 @@ spec:
         checksum/config: 2b9f5a2e0967fa150ef2a482e8ac9b096e636b6f94b546e4099c340a40180353
         checksum/dashboards-json-config: 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
         checksum/sc-dashboard-provider-config: 832702ef9354ad9ff172e67ad5f340cf5969d18de964d2d70fa1b02a16c2a7f5
-        checksum/secret: 1b0bce2ee3051b71cab31fa20fb03be549453fde298c53421853c012b330765e
+        checksum/secret: 5da55b00c49e65f225fb2058eeed020676a6d1fcf71b065f6e603a1c49a5172c
     spec:
       
       serviceAccountName: kube-prometheus-stack-grafana
