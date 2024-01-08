@@ -5,3 +5,4 @@ resources:
 - base/kube-prometheus-stack.yaml
 - base/guestbook.yaml
 - base/outofsync-guestbook.yaml
+- base/dragonflydb-operator.yaml

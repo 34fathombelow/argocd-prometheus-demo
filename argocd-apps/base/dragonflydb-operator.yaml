@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: dragonflydb-operator
+  namespace: argocd
+spec:
+  destination:
+    namespace: dragonfly-operator-system
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: infra/dragonflydb
+    repoURL: https://github.com/34fathombelow/argocd-prometheus-demo.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
