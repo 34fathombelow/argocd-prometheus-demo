@@ -6,3 +6,4 @@ resources:
 - base/guestbook.yaml
 - base/outofsync-guestbook.yaml
 - base/dragonflydb-operator.yaml
+- base/cert-manager.yaml
