@@ -11,11 +11,12 @@ resources:
 - github.com/argoproj/argo-cd//manifests/base/repo-server?ref=v2.9.3
 - github.com/argoproj/argo-cd//manifests/base/server?ref=v2.9.3
 - github.com/argoproj/argo-cd//manifests/base/config?ref=v2.9.3
+- github.com/argoproj/argo-cd//manifests/base/redis?ref=v2.9.3
 - github.com/argoproj/argo-cd//manifests/base/notification?ref=v2.9.3
 - github.com/argoproj/argo-cd//manifests/base/applicationset-controller?ref=v2.9.3
 - github.com/argoproj/argo-cd//manifests/cluster-rbac?ref=v2.9.3
 - github.com/argoproj/argo-cd//manifests/crds?ref=v2.9.3
-- overlays/production/argocd-dragonfly-db.yaml
+#- overlays/production/argocd-dragonfly-db.yaml
 
 
 patchesStrategicMerge:
