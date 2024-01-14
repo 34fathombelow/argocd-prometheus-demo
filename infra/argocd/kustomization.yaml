@@ -16,6 +16,7 @@ resources:
 - github.com/argoproj/argo-cd//manifests/cluster-rbac?ref=v2.9.3
 - github.com/argoproj/argo-cd//manifests/crds?ref=v2.9.3
 - overlays/production/argocd-dragonfly-db.yaml
+- overlays/production/ingress-route.yaml
 
 
 patchesStrategicMerge:
