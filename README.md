@@ -1,8 +1,10 @@
-# Argo CD Prometheus with dragonflyDB
+# Argo CD with dragonflyDB
 The Purpose of this repository is to demonstrate how Argo CD can self manage itself using the **app of apps pattern**. Once the cluster is fully bootstrapped, Argo CD and a full Prometheus monitoring stack will be deployed. Dashboards and alerts are configured to monitor Argo CD. An Application `guestbook-not-synced` should be in the **Missing** and `OutOfSync` status by default. One can visit the Prometheus or Alertmanager application to view the triggered alerts.  Clicking the `SYNC` button in the Argo CD UI for the `guestbook-not-synced` Application will sync the Application and clear the alerts.  
 
 ## Bootstrapping the Demo
-Have a test Kubernetes cluster up and running. (Kind, K3S, etc..)
+Have a k3d Kubernetes cluster up and running.
+
+1. `k3d cluster create argo  -p "80:80@loadbalancer" -p "443:443@loadbalancer"`
 
 1. Clone this repository and switch to the root folder of the repo
 
@@ -20,28 +22,21 @@ $ kubectl apply -f bootstrap.yaml
 ```
 
 ## Accessing the UIs
-Once the bootstrap is synced, Argo CD and the Prometheus monitoring stack will be accessible through the UI. They can easily be accessible by using `kubectl port-forward`
+Once the bootstrap is synced, Argo CD and the Prometheus monitoring stack will be accessible through the UI.
 
 ### Argo CD
-```bash
-$ kubectl -n argocd port-forward svc/argocd-server 4000:443
-```
-You can then access via http://localhost:4000 anonymous access has been enabled with `admin` privileges for demonstration purposes
+Anonymous access has been enabled with `admin` privileges for demonstration purposes
+
+https://argocd.localhost
+
 
 ### Prometheus
-```bash
-$ kubectl -n monitoring port-forward svc/kube-prometheus-stack-prometheus 4001:9090
-```
-You can then access via http://localhost:4001
+http://prometheus.localhost
 
 ### Alertmanager
-```bash
-$ kubectl -n monitoring port-forward svc/kube-prometheus-stack-alertmanager 4002:9093
-```
-You can then access via http://localhost:4002
+http://alertmanager.localhost
 
 ### Grafana
-```bash
-$ kubectl -n monitoring port-forward svc/kube-prometheus-stack-grafana 4003:80
-```
-You can then access via http://localhost:4003 and use the default user:password of `admin:admin`
+http://grafana.localhost 
+
+default user:password `admin:admin`
