@@ -54,8 +54,7 @@ metadata:
 spec:
   args:
     - "--proactor_threads=1"
-    - "--compression_mode=2"
-    - "--compression_level=2"
+    - "--maxmemory=1GiB"
   image: docker.dragonflydb.io/dragonflydb/dragonfly:v1.13.0
   # Password authentication needed when TLS enabled
   authentication:
