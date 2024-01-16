@@ -3,5 +3,5 @@ kind: ConfigMap
 metadata:
   name: argocd-rbac-cm
 data:
-  # Never do this in production, for demo only.
+  # Never do this in production, for demo only. This will give everyone Admin access by default.
   policy.default: role:admin

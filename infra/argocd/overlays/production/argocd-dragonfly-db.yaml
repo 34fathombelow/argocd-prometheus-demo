@@ -1,3 +1,45 @@
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: ca-issuer
+  namespace: argocd
+spec:
+  selfSigned: {}
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: argocd-dragonfly-password
+  namespace: argocd
+type: Opaque
+stringData:
+  password: '12345678'
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: argocd-dragonfly-cert
+  namespace: argocd
+spec:
+  secretName: dragonflydb-tls
+  duration: 2160h # 90d
+  renewBefore: 360h # 15d
+  subject:
+    organizations:
+      - dragonfly-sample
+  privateKey:
+    algorithm: RSA
+    encoding: PKCS1
+    size: 2048
+  dnsNames:
+    - argocd-dragonflydb.argocd
+    - argocd-dragonflydb
+    - argocd-dragonfly-db
+  issuerRef:
+    name: ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
 apiVersion: dragonflydb.io/v1alpha1
 kind: Dragonfly
 metadata:
@@ -15,6 +57,13 @@ spec:
     - "--compression_mode=2"
     - "--compression_level=2"
   image: docker.dragonflydb.io/dragonflydb/dragonfly:v1.13.0
+  # Password authentication needed when TLS enabled
+  authentication:
+      passwordFromSecret:
+        name: argocd-dragonfly-password
+        key: password
+  tlsSecretRef:
+      name: dragonflydb-tls
   replicas: 2
   resources:
     requests:

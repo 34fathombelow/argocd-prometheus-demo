@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argocd-repo-server
+spec:
+  template:
+    spec:
+      containers:
+        - name: argocd-repo-server
+          env:
+          - name: REDIS_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: argocd-dragonfly-password
+                key: password
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argocd-repo-server
+spec:
+  template:
+    spec:
+      containers:
+        - name: argocd-repo-server
+          volumeMounts:
+            - name: dragonflydb-tls
+              mountPath: /etc/certs/dragonflydb
+      volumes:
+        - name: dragonflydb-tls
+          secret:
+            defaultMode: 420
+            items:
+            - key: tls.crt
+              path: tls.crt
+            - key: tls.key
+              path: tls.key
+            - key: ca.crt
+              path: ca.crt
+            secretName: dragonflydb-tls
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argocd-repo-server
+spec:
+  template:
+    spec:
+      containers:
+        - name: argocd-repo-server
+          args:
+          - /usr/local/bin/argocd-repo-server
+          - --redis-ca-certificate 
+          - /etc/certs/dragonflydb/ca.crt
+          - --redis-use-tls
+          - --redis-insecure-skip-tls-verify
