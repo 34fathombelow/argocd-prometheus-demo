@@ -26,5 +26,5 @@ kube-prometheus-stack:
       paths:
         - /
     prometheusSpec:
-      scrapeInterval: 60s
+      scrapeInterval: 10s
 
