@@ -42546,7 +42546,7 @@ data:
       isDefault: true
       jsonData:
         httpMethod: POST
-        timeInterval: 30s
+        timeInterval: 60s
     - name: Alertmanager
       type: alertmanager
       uid: alertmanager
@@ -44604,6 +44604,7 @@ spec:
   logFormat:  logfmt
   listenLocal: false
   enableAdminAPI: false
+  scrapeInterval: 60s
   retention: "10d"
   tsdb:
     outOfOrderTimeWindow: 0s
