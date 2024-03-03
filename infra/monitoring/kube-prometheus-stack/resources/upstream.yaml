@@ -42546,7 +42546,7 @@ data:
       isDefault: true
       jsonData:
         httpMethod: POST
-        timeInterval: 10s
+        timeInterval: 30s
     - name: Alertmanager
       type: alertmanager
       uid: alertmanager
@@ -44604,7 +44604,6 @@ spec:
   logFormat:  logfmt
   listenLocal: false
   enableAdminAPI: false
-  scrapeInterval: 10s
   retention: "10d"
   tsdb:
     outOfOrderTimeWindow: 0s
@@ -47916,6 +47915,7 @@ spec:
   endpoints:
     - port: http-metrics
       scheme: http
+      interval: 60s
 ---
 # Source: kube-prometheus-stack/charts/kube-prometheus-stack/templates/alertmanager/servicemonitor.yaml
 apiVersion: monitoring.coreos.com/v1

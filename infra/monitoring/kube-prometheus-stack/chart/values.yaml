@@ -25,6 +25,8 @@ kube-prometheus-stack:
         - prometheus.localhost
       paths:
         - /
-    prometheusSpec:
-      scrapeInterval: 10s
+  prometheus-node-exporter:
+    prometheus:
+      monitor:
+        interval: 60s
 
