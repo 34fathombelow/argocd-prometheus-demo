@@ -47915,7 +47915,7 @@ spec:
   endpoints:
     - port: http-metrics
       scheme: http
-      interval: 60s
+      interval: 15s
 ---
 # Source: kube-prometheus-stack/charts/kube-prometheus-stack/templates/alertmanager/servicemonitor.yaml
 apiVersion: monitoring.coreos.com/v1
