@@ -3,3 +3,4 @@ kind: Kustomization
 namespace: dragonfly-operator-system
 resources:
 - base/dragonflydb-operator.yaml
+- base/service-monitor.yaml

@@ -1,0 +1,20 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app.kubernetes.io/instance: kube-prometheus-stack
+    release: kube-prometheus-stack
+    group: dragonfly
+  name: controller-manager-metrics-monitor
+  namespace: dragonfly-operator-system
+spec:
+  endpoints:
+    - port: https
+      path: /metrics
+      scheme: https
+      bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+      tlsConfig:
+        insecureSkipVerify: false
+  selector:
+    matchLabels:
+      control-plane: controller-manager
