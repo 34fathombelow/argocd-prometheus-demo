@@ -3,8 +3,8 @@ kind: Kustomization
 namespace: argocd
 images:
 - name: quay.io/argoproj/argocd
-  newName: quay.io/akuity/argocd
-  newTag: v2.9.9-ak.22
+  newName: quay.io/34fathombelow/argocd
+  newTag: latest-otel46.1
 resources:
 - github.com/argoproj/argo-cd//manifests/base/application-controller?ref=v2.9.3
 - github.com/argoproj/argo-cd//manifests/base/dex?ref=v2.9.3
