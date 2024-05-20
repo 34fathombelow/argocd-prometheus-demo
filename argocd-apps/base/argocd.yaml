@@ -12,7 +12,3 @@ spec:
     path: infra/argocd
     repoURL: https://github.com/34fathombelow/argocd-prometheus-demo.git
     targetRevision: HEAD
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: false
