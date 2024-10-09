@@ -55,7 +55,7 @@ spec:
   args:
     - "--proactor_threads=1"
     - "--maxmemory=1GiB"
-  image: docker.dragonflydb.io/dragonflydb/dragonfly:v1.13.0
+  image: docker.dragonflydb.io/dragonflydb/dragonfly:v1.23.1
   # Password authentication needed when TLS enabled
   authentication:
       passwordFromSecret:
