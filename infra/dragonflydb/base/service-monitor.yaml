@@ -11,6 +11,7 @@ spec:
   endpoints:
     - port: https
       path: /metrics
+      interval: 30s
       scheme: https
       bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
       tlsConfig:
