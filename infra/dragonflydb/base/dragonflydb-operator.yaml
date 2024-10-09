@@ -2043,7 +2043,7 @@ metadata:
   name: dragonfly-operator-controller-manager
   namespace: dragonfly-operator-system
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       control-plane: controller-manager
