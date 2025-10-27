@@ -4,17 +4,17 @@ namespace: argocd
 images:
 - name: quay.io/argoproj/argocd
   newName: quay.io/argoproj/argocd
-  newTag: v3.1.4
+  newTag: v3.1.9
 resources:
-- github.com/argoproj/argo-cd//manifests/base/application-controller?ref=v3.1.4
-- github.com/argoproj/argo-cd//manifests/base/dex?ref=v3.1.4
-- github.com/argoproj/argo-cd//manifests/base/repo-server?ref=v3.1.4
-- github.com/argoproj/argo-cd//manifests/base/server?ref=v3.1.4
-- github.com/argoproj/argo-cd//manifests/base/config?ref=vv3.1.4
-- github.com/argoproj/argo-cd//manifests/base/notification?ref=v3.1.4
-- github.com/argoproj/argo-cd//manifests/base/applicationset-controller?ref=v3.1.4
-- github.com/argoproj/argo-cd//manifests/cluster-rbac?ref=v3.1.4
-- github.com/argoproj/argo-cd//manifests/crds?ref=v3.1.4
+- github.com/argoproj/argo-cd//manifests/base/application-controller?ref=v3.1.9
+- github.com/argoproj/argo-cd//manifests/base/dex?ref=v3.1.9
+- github.com/argoproj/argo-cd//manifests/base/repo-server?ref=v3.1.9
+- github.com/argoproj/argo-cd//manifests/base/server?ref=v3.1.9
+- github.com/argoproj/argo-cd//manifests/base/config?ref=vv3.1.9
+- github.com/argoproj/argo-cd//manifests/base/notification?ref=v3.1.9
+- github.com/argoproj/argo-cd//manifests/base/applicationset-controller?ref=v3.1.9
+- github.com/argoproj/argo-cd//manifests/cluster-rbac?ref=v3.1.9
+- github.com/argoproj/argo-cd//manifests/crds?ref=v3.1.9
 - overlays/production/argocd-dragonfly-db.yaml
 - overlays/production/ingress-route.yaml
 
