@@ -10,7 +10,7 @@ resources:
 - github.com/argoproj/argo-cd//manifests/base/dex?ref=v3.1.9
 - github.com/argoproj/argo-cd//manifests/base/repo-server?ref=v3.1.9
 - github.com/argoproj/argo-cd//manifests/base/server?ref=v3.1.9
-- github.com/argoproj/argo-cd//manifests/base/config?ref=vv3.1.9
+- github.com/argoproj/argo-cd//manifests/base/config?ref=v3.1.9
 - github.com/argoproj/argo-cd//manifests/base/notification?ref=v3.1.9
 - github.com/argoproj/argo-cd//manifests/base/applicationset-controller?ref=v3.1.9
 - github.com/argoproj/argo-cd//manifests/cluster-rbac?ref=v3.1.9
